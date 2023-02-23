@@ -4,6 +4,7 @@ public class P64 {
 
 	public static void main(String[] args) {
 		int a = 10;
+		int b = 10;
 		double d = 10.2355;
 			//int와 double은 기본자료형
 		String str1 = "abc";
