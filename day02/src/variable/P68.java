@@ -20,10 +20,7 @@ public class P68 {
 			//string과 일반타입을 더하면 오른쪽 식을 강제로 string으로 바꿈.
 		//System.out.println(s1-10);//안돼. +만 concat으로 인식
 		
-		int n1 = 10;
-		String n2 = String.valueOf(n1);//parseInt나 valueOf는 API. 잘 이용하자!
-									   //어떤 API인지는 드래그하고 f3 또는 자바 사전
-									   //java.lang API말고 다른 API는 import필요.
+	
 		//String n2 = n1;//안돼
 		//String n2 = n1+"";//string을 더하면 string이 된다.
 		
