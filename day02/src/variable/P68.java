@@ -11,6 +11,7 @@ public class P68 {
 
 	public static void main(String[] args) {
 		//String s1 = 10;//타입을 바꾸라고 함.
+		String s2 = "11";
 		String s1 = "10";
 		int s2 = Integer.parseInt(s1);
 		int a = 10;
