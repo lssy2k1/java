@@ -1,4 +1,4 @@
-package variable
+package variable;
 
 public class test{
 
