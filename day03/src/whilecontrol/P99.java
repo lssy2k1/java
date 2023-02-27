@@ -8,6 +8,7 @@ public class P99 {
 		int a = 10;
 		int b = 20;
 		int aa= 100;
+		int cc = 100;
 		
 		for (int i = 2; i < 10; i++) {
 			System.out.printf("%d 단 \n", i);
