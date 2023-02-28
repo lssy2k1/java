@@ -8,6 +8,8 @@ public class Car {
 	//고객명 등을 받기 위해선 생성자가 필요함
 	
 	//생성자. (constructor), return타입은 존재하지 않음.
+	//public car(){} //생성자가 없을 때는 자동으로 디폴트 컨스트럭트를 만들어서 쓰게됨.
+	//argument가 존재하는 생성자가 있을 경우는 디폴트 컨스트럭터는 자동생성 안됨.
 	public Car() {
 		this.name = "k1";//this는 #100주소를 가리킴. #100주소의 name에는 k1이들어가고
 		this.color = "red";//#100주소의 color에는 red가 들어가고...
