@@ -4,12 +4,12 @@ public class App {
 
 	public static void main(String[] args) {
 		Account account[] = new Account[6];
-		account[0] = new Account("james1", 13500, 0.35, "VIP");
-		account[1] = new Account("james2", 79000, 0.45, "GOLD");
-		account[2] = new Account("james3", 33000, 0.55, "SIVER");
-		account[3] = new Account("james4", 10770, 0.15, "GOLD");
-		account[4] = new Account("james5", 18000, 0.28, "SIVER");
-		account[5] = new Account("james6", 90000, 0.31, "VIP");
+		account[0] = new Account("james1", 10000, 0.35, "VIP");
+		account[1] = new Account("james2", 10000, 0.45, "GOLD");
+		account[2] = new Account("james3", 10000, 0.55, "SIVER");
+		account[3] = new Account("james4", 10000, 0.15, "GOLD");
+		account[4] = new Account("james5", 10000, 0.28, "SIVER");
+		account[5] = new Account("james6", 10000, 0.31, "VIP");
 		
 		for (Account acc : account) {
 			System.out.println(acc);
