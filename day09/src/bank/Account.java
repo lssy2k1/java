@@ -6,8 +6,19 @@ public class Account {
 	private String accHolder;
 	private double balance;
 	public Account() {
+		this.accNo = MakeAccountNum.makeAccountNum();
 	}
 	
+	public Account(String name, String accHolder, double balance) throws MinusException {
+		this();
+		this.name = name;
+		this.accHolder = accHolder;
+		if (balance < 0) {
+			throw new MinusException("마이너스오류!");
+		}
+		this.balance = balance;
+	}
+
 	//constructor - 음수 예외 상황
 	public Account(String accNo, String name, String accHolder, double balance) throws MinusException {
 		this.accNo = accNo;

@@ -14,8 +14,8 @@ public class App {
 				System.out.println("bye");
 				break;
 			}else if (cmd.equals("c")) {
-				System.out.println("accNum를 입력하세요");
-				String accNum = sc.next();
+				//System.out.println("accNum를 입력하세요");
+				//String accNum = sc.next();
 				System.out.println("name를 입력하세요");
 				String name = sc.next();
 				System.out.println("accHolder를 입력하세요");
@@ -23,7 +23,8 @@ public class App {
 				System.out.println("balance를 입력하세요");
 				double balance = sc.nextDouble();
 				try {
-					acc = new Account(accNum, name, accHolder, balance);
+					acc = new Account(name, accHolder, balance);
+					//acc = new Account(accNum, name, accHolder, balance);
 					System.out.println(acc);
 				} catch (MinusException e) {
 					System.out.println("입력하신 금액이 음수입니다.");
