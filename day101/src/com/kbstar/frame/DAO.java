@@ -1,4 +1,4 @@
-package com.kbstar.dao;
+package com.kbstar.frame;
 
 import java.util.List;
 

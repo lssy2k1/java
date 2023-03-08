@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.kbstar.dto.UserDTO;
+import com.kbstar.frame.DAO;
 
 public class UserDAO implements DAO<String, UserDTO> {
 

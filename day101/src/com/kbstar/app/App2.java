@@ -3,9 +3,9 @@ package com.kbstar.app;
 import java.util.List;
 import java.util.Scanner;
 
-import com.kbstar.dao.DAO;
 import com.kbstar.dao.ItemDAO;
 import com.kbstar.dto.ItemDTO;
+import com.kbstar.frame.DAO;
 
 
 public class App2 {

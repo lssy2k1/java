@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.kbstar.dto.ItemDTO;
+import com.kbstar.frame.DAO;
 
 public class ItemDAO implements DAO<Integer, ItemDTO> {
 
