@@ -54,6 +54,9 @@ public class ItemDAO implements DAO<Integer, ItemDTO> {
 	public List<ItemDTO> select() throws Exception {
 		ArrayList<ItemDTO> list = new ArrayList<ItemDTO>();
 		Collection<ItemDTO> col = db.values();
+		if (col.size() == 0) {
+			throw new Exception("등록된 자료가 없습니다.");
+		}
 		for (ItemDTO i : col) {
 			list.add(i);
 		}
