@@ -21,8 +21,13 @@ public class App {
 			myNum.add(num);
 		}
 		
-		int grade = lt.checkRanking(myNum);
-		lt.prizeMoney(grade);
+		int grade;
+		try {
+			grade = lt.checkRanking(myNum);
+			lt.prizeMoney(grade);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 		sc.close();
 	}
 

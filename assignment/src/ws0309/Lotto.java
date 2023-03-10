@@ -17,7 +17,7 @@ public class Lotto {
 		System.out.printf("정답 : %s, 상금 : %10.2f\n", winningNum, prizeMoney);
 	}
 	
-	public int checkRanking(ArrayList<Integer> myNum) {
+	public int checkRanking(ArrayList<Integer> myNum) throws Exception {
 		int cnt = 0;
 		int grade = 0;
 		for (int num : myNum) {
@@ -33,6 +33,9 @@ public class Lotto {
 		}
 		if (cnt == 1) {
 			grade = 3;
+		}
+		if (cnt != 3 || cnt !=2 || cnt!=1) {
+			throw new Exception("꽝");
 		}
 		return grade;
 	}
@@ -54,7 +57,7 @@ public class Lotto {
 			return result;
 		default :
 			result = 0.0;
-			System.out.println("꽝");
+			//System.out.println("꽝");
 			return result;
 		}
 	}
