@@ -70,8 +70,17 @@ public class AccountDAO implements DAO<String, AccountDTO>{
 	
 	@Override
 	public List<AccountDTO> search(Object obj) throws Exception {
-
-		return null;
+		List<AccountDTO> list = new ArrayList<AccountDTO>();
+		Collection<AccountDTO> col = db.values();
+		
+		for (AccountDTO acc : col) {
+			//계좌 중에서 id가 obj와 같은 것들만
+			if ((acc.getHolder().equals(obj))) {
+			list.add(acc);
+			}
+		}
+		
+		return list;
 	}
 
 

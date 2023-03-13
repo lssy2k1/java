@@ -7,9 +7,7 @@ import com.kbstar.dto.AccountDTO;
 import com.kbstar.dto.TransactionDTO;
 import com.kbstar.dto.UserDTO;
 import com.kbstar.frame.BankService;
-import com.kbstar.frame.CRUDService;
 import com.kbstar.service.BankServiceImpl;
-import com.kbstar.service.UserService;
 
 public class App {
 
@@ -75,10 +73,11 @@ public class App {
 
 						}else if (cmd2.equals("a")){
 							System.out.println("Select Account...input Id");
-							String id2 = sc.next();
-							List<AccountDTO> list = service.getAllAccount(id2);
-							System.out.println(list);
-							
+							List<AccountDTO> list = null;
+							list = service.getAllAccount(user.getId());
+							for (AccountDTO acc : list) {
+								System.out.println(acc);
+							}
 						}else if (cmd2.equals("i")){
 							System.out.println("user info...");
 							String id1 = sc.next();
@@ -89,9 +88,13 @@ public class App {
 							
 						}else if (cmd2.equals("tr")){
 							System.out.println("select transaction...input Account");
-							String acc1 = sc.next(); 
-							List<TransactionDTO> transactionDTO = service.getAllTr(acc1);
-							System.out.println(transactionDTO);
+							String accNo = sc.next();
+							List<TransactionDTO> list = null;
+							list = service.getAllTr(accNo);
+							for (TransactionDTO tr : list) {
+								System.out.println(tr);
+							}
+							
 						}
 					}
 				} catch (Exception e) {

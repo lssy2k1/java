@@ -87,18 +87,17 @@ implements BankService<UserDTO, AccountDTO, TransactionDTO, String, String> {
 	//////////////////////////////////아직은 구현 못함/////////////////////////////////////////
 	@Override
 	public List<AccountDTO> getAllAccount(String k) throws Exception {
-		List<AccountDTO> list = new ArrayList<>();
-		list = accountDao.select();
-		//System.out.println(list);
+		List<AccountDTO> list = null;
+		list = accountDao.search(k);
 		return list;
+		//return accounDTO.search(k);//만으로도 처리가 가능함. 공부를 할 때는 순차적으로.
 	}
 
 	//////////////////////////////////아직은 구현 못함/////////////////////////////////////////
 	@Override
 	public List<TransactionDTO> getAllTr(String acc) throws Exception {
 		List<TransactionDTO> list = new ArrayList<>();
-		list = transactionDao.select();
-		//System.out.println(list);
+		list = transactionDao.search(acc);
 		return list;
 	}
 
