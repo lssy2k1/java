@@ -60,34 +60,59 @@ public class CustCRUDServiceImpl implements CRUDService<String, Cust> {
 	}
 
 	@Override
+	//트러블케이스를 테스트하는 것이 중요함! 예외처리가 중요.
+	//데이터가 없는 상황 및 DB연결이 끊어진 상황.
 	public Cust get(String k) throws Exception {
 		Cust cust = null;
 		try {
-		cust = dao.select(k);
-		System.out.println("선택완료");
-		return cust;
-		}catch (Exception e) {
-			if (e instanceof SQLRecoverableException) {
-				throw new Exception("시스템 장애");
-			} else {
-				throw new Exception("해당 ID가 없습니다.");
+			cust = dao.select(k);
+		}catch(Exception e){
+			if(e instanceof SQLRecoverableException) {
+				throw new Exception("서비스 장애입니다.");//오류메세지를 고객에게 보여지게끔 Service에서 가공한다.
+			}else {
+				throw new Exception("아이디가 존재하지 않습니다.");
 			}
 		}
+		return cust;
+		
+//		Cust cust = null;
+//		try {
+//			cust = dao.select(k);
+//			System.out.println("선택완료");
+//			return cust;
+//		}catch (Exception e) {
+//			if (e instanceof SQLRecoverableException) {
+//				throw new Exception("시스템 장애");
+//			} else {
+//				throw new Exception("해당 ID가 없습니다.");
+//			}
+//		}
 	}
 
 	@Override
 	public List<Cust> get() throws Exception {
 		List<Cust> list = null;
-		try {
+		try{
 			list = dao.selectAll();
-			return list;
-		}catch (Exception e) {
-			if (e instanceof SQLRecoverableException) {
-				throw new Exception("시스템 장애");
-			} else {
-				throw new Exception("id가 없습니다.");
-			}
+		}catch(Exception e){
+			if(e instanceof SQLRecoverableException) {
+				throw new Exception("서비스 장애입니다.");//오류메세지를 고객에게 보여지게끔 Service에서 가공한다.
+			}//else {
+				//throw new Exception("아이디가 존재하지 않습니다.");
+			//}
 		}
+		return list;
+		//		List<Cust> list = null;
+//		try {
+//			list = dao.selectAll();
+//			return list;
+//		}catch (Exception e) {
+//			if (e instanceof SQLRecoverableException) {
+//				throw new Exception("시스템 장애");
+//			} else {
+//				throw new Exception("id가 없습니다.");
+//			}
+//		}
 
 	}
 

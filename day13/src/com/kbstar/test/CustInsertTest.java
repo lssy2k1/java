@@ -9,24 +9,24 @@ public class CustInsertTest {
 	public static void main(String[] args) {
 		CRUDService<String, Cust> crudService = new CustCRUDServiceImpl();
 
-//		Cust cust = new Cust("id57", "pwd20", "tom", 30);
-//
-//		try {
-//			crudService.register(cust);
-//			System.out.println("입력성공");
-//		} catch (Exception e) {
-//			System.out.println(e.getMessage());
-//		}
+		Cust cust = new Cust("id98", "pwd99", "anderson", 70);
 
-		Cust cust = new Cust("id57", "pwd90", "9tom9", 30);
-		
 		try {
-			crudService.modify(cust);
-			System.out.println("수정완료");
+			crudService.register(cust);
+			System.out.println("입력성공");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			e.printStackTrace();
 		}
+
+//		Cust cust = new Cust("id17", "pwd17", "tom17", 30);
+//		
+//		try {
+//			crudService.modify(cust);
+//			System.out.println("수정완료");
+//		} catch (Exception e) {
+//			System.out.println(e.getMessage());
+//			e.printStackTrace();
+//		}
 
 
 	}

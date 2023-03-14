@@ -31,7 +31,7 @@ public class SelectTest {
 		
 		try (Connection con = DriverManager.getConnection(url, id, pwd); 
 				PreparedStatement pstmt = con.prepareStatement(selectSql);){
-			pstmt.setString(1, "id99");
+			pstmt.setString(1, "id06");
 			try(ResultSet rset = pstmt.executeQuery()){
 				rset.next();//데이터 전을 가리키는데, 하나 다음으로 옮겨서 읽는다.
 				String db_id = rset.getString("id");

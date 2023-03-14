@@ -92,47 +92,100 @@ public class CustDaoImpl implements DAO<String, String, Cust> {
 
 	@Override
 	public Cust select(String k) throws Exception {
-		try (Connection con = getConnection(); PreparedStatement pstmt = con.prepareStatement(Sql.selectSql);) {
+		Cust cust = null;
+		try (Connection con = getConnection();
+				PreparedStatement pstmt = con.prepareStatement(Sql.selectSql) ){
 			pstmt.setString(1, k);
-			try (ResultSet rset = pstmt.executeQuery()) {
+			//sql구문에 물음표가 있기 때문에 해주는 것!
+			//pstmt에 셋팅을 해주는데 1번째에 k값을 넣겠다.
+			//데이터를 업데이트 할 때는 executeUpdate, 가져올때는 query
+			try (ResultSet rset = pstmt.executeQuery()){
 				rset.next();
-				Cust cust = null;
-				String db_id = rset.getString("id");
-				String db_pwd = rset.getString("pwd");
-				String db_name = rset.getString("name");
+				String id = rset.getString("id");//테이블 생성할 때 칼럼 명.
+				String pwd = rset.getString("pwd");
+				String name = rset.getString("name");
 				int age = rset.getInt("age");
-				cust = new Cust(db_id, db_pwd, db_name, age);
-				return cust;
-			} catch (SQLException e) {
-				throw new Exception();
+				cust = new Cust(id, pwd, name, age);
+			}catch(Exception e){
+				throw e;
+				//e.printStackTrace();
+				//데이터가 없을때 예외가 여기서 잡힌다.
+				//그런데 던진게 어디서 잡혀?
+				//바로 아래 try catch에서 잡힌다.
 			}
-		} catch (SQLException e1) {
-			throw new Exception();
+		}catch(Exception e) {//네트워크가 없을 때 예외가 여기서 잡힌다.
+			throw e;			
 		}
+		return cust;
 	}
 
 	@Override
 	public List<Cust> selectAll() throws Exception {
-		try (Connection con = getConnection(); PreparedStatement pstmt = con.prepareStatement(Sql.selectAllSql);) {
-			try (ResultSet rset = pstmt.executeQuery()) {
-				List<Cust> list = new ArrayList<Cust>();
-				Cust cust = null;
-				while (rset.next()) {
-					String db_id = rset.getString("id");
-					String db_pwd = rset.getString("pwd");
-					String db_name = rset.getString("name");
+		List<Cust> list = new ArrayList<>();
+		try(Connection con = getConnection();
+				PreparedStatement pstmt = con.prepareStatement(Sql.selectAllSql);){
+			try(ResultSet rset = pstmt.executeQuery();){
+				while(rset.next()) {
+					Cust cust = null;
+					String id = rset.getString("id");//테이블 생성할 때 칼럼 명.
+					String pwd = rset.getString("pwd");
+					String name = rset.getString("name");
 					int age = rset.getInt("age");
-					cust = new Cust(db_id, db_pwd, db_name, age);
-				    list.add(cust);
+					cust = new Cust(id, pwd, name, age);
+					list.add(cust);
 				}
-				return list;
-			} catch (SQLException e) {
-				throw new Exception();
+			}catch(Exception e){
+				//throw e;
 			}
-		} catch (SQLException e1) {
-			throw new Exception();
+		}catch(Exception e){
+			throw e;
 		}
+		return list;
 	}
+	
+//	@Override//내가해본것
+//	public Cust select(String k) throws Exception {
+//		try (Connection con = getConnection(); PreparedStatement pstmt = con.prepareStatement(Sql.selectSql);) {
+//			pstmt.setString(1, k);
+//			try (ResultSet rset = pstmt.executeQuery()) {
+//				rset.next();
+//				Cust cust = null;
+//				String db_id = rset.getString("id");
+//				String db_pwd = rset.getString("pwd");
+//				String db_name = rset.getString("name");
+//				int age = rset.getInt("age");
+//				cust = new Cust(db_id, db_pwd, db_name, age);
+//				return cust;
+//			} catch (SQLException e) {
+//				throw new Exception();
+//			}
+//		} catch (SQLException e1) {
+//			throw new Exception();
+//		}
+//	}
+	
+//	@Override//내가해본것
+//	public List<Cust> selectAll() throws Exception {
+//		try (Connection con = getConnection(); PreparedStatement pstmt = con.prepareStatement(Sql.selectAllSql);) {
+//			try (ResultSet rset = pstmt.executeQuery()) {
+//				List<Cust> list = new ArrayList<Cust>();
+//				Cust cust = null;
+//				while (rset.next()) {
+//					String db_id = rset.getString("id");
+//					String db_pwd = rset.getString("pwd");
+//					String db_name = rset.getString("name");
+//					int age = rset.getInt("age");
+//					cust = new Cust(db_id, db_pwd, db_name, age);
+//				    list.add(cust);
+//				}
+//				return list;
+//			} catch (SQLException e) {
+//				throw new Exception();
+//			}
+//		} catch (SQLException e1) {
+//			throw new Exception();
+//		}
+//	}
 
 	@Override
 	public List<Cust> search(String k2) throws Exception {
