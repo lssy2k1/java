@@ -93,14 +93,12 @@ public class CartCRUDServiceImpl implements CRUDService<String, Cart> {
 	@Override
 	public List<Cart> get() throws Exception {
 		List<Cart> list = new ArrayList<>();
-		dao = new CartDaoImpl();
 		try {
-		list = dao.selectAll();
-		} catch(Exception e) {
-			if(e instanceof SQLRecoverableException) {
+			list = dao.selectAll();
+		} catch (Exception e) {
+			if (e instanceof SQLRecoverableException) {
 				throw new Exception("Network Error....Check your IP Address");
-			}
-			else if(e instanceof SQLSyntaxErrorException) {
+			} else if (e instanceof SQLSyntaxErrorException) {
 				throw new Exception("Data doesn't exist.");
 			}
 		}
