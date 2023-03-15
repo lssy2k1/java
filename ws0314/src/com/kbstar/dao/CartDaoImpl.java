@@ -106,8 +106,28 @@ public class CartDaoImpl implements DAO<String, String, Cart> {
 
 	@Override
 	public List<Cart> search(String k2) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		List<Cart> list = new ArrayList<>();
+		try (Connection con = getConnection(); 
+				PreparedStatement pstmt =
+						con.prepareStatement(Sql.myCartSelectAllSql);) {//셀렉트인데 조건이 하나 붙은거다!
+			pstmt.setString(1, k2);
+			try (ResultSet rset = pstmt.executeQuery()) {
+				while (rset.next()) {
+					Cart cart = null;
+					String id = rset.getString("id");
+					String user_id = rset.getString("user_id");
+					String item_id = rset.getString("item_id");
+					int cnt = rset.getInt("cnt");
+					Date regdate = rset.getDate("regdate");
+					cart = new Cart(id, user_id, item_id, cnt, regdate);
+					list.add(cart);
+				}
+			} catch (Exception e) {
+				throw e;
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+		return list;
 	}
-
 }
